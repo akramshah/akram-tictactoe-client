@@ -1,1 +1,62 @@
 @import '~bootstrap/scss/bootstrap';
+
+body {
+  background-color: #ff6d69;
+  display: flex;
+  align-items: center;
+  flex-flow: column wrap; 
+}
+
+@font-face {
+  font-family: 'TheAnthelope';
+  src: url('assets/styles/TheAnthelope.woff') format('woff'),
+  url('assets/styles/TheAnthelope.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+
+
+h1 {
+  padding: 20px;
+  font-family: TheAnthelope;
+  font-size: 72px;
+  color: #fecc50;
+  -webkit-text-stroke-width: 2px;
+  -webkit-text-stroke-color: #1e0521;
+}
+
+.unauthenticated-style {
+  padding: 10px;
+}
+
+
+button {
+  border-radius: 25px;
+  background-color: #fecc50;
+  color: #1e0521;
+  font-size: 20px;
+  font-family: TheAnthelope;
+}
+
+input {
+  border-radius: 10px;
+  color: #1e0521;
+  font-family: 'Times New Roman', Times, serif;
+}
+
+#game-board{
+  padding: 20px;
+   border: 0px;
+}
+
+#message {
+ font-family: TheAnthelope;
+}
+
+.box {
+  display: flex;
+  align-items: center;
+  border: 2px solid ;
+  height: 150px;
+  width: 50px;
+}
