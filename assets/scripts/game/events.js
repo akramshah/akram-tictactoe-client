@@ -1,5 +1,7 @@
 const api = require('./api')
 const ui = require('./ui')
+const store = require('./../store')
+const { isEmptyObject } = require('jquery')
 
 const onCreateGame = function (event) {
   api.createGame()
@@ -21,7 +23,13 @@ const onSelectBox = function (event) {
   .catch(ui.selectBoxSuccess)
 }
 
-
+const checkBox = function () {
+  if (store.game.cell === " ") {
+  onSelectBox() 
+} else {
+  console.log('space was taken')
+}
+}
 
 module.exports = {
   onCreateGame,
