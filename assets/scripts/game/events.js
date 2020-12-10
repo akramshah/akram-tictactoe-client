@@ -1,7 +1,6 @@
 const api = require('./api')
 const ui = require('./ui')
 const store = require('./../store')
-const { isEmptyObject } = require('jquery')
 
 const onCreateGame = function (event) {
   api.createGame()
@@ -14,22 +13,30 @@ const onCreateGame = function (event) {
 }
 
 const player = 'X'
+const switchPlayer = function () {
+
+}
 
 const onSelectBox = function (event) {
-  $(this).html(player)
-  const cellIndex = $(this).data()
+  console.log('did this print?')
+  const cellIndex = $(event.target).data("cell-index") 
+  console.log(cellIndex)
+  const gameArray =  store.game.cells 
+  console.log(gameArray)
+  const value = gameArray[cellIndex]
+   console.log('value is ', value)
+   console.log('condition is ', value === '')
+  if (value === '') {
+    $(event.target).html(player)
   api.selectBox(cellIndex, player)
   .then(ui.selectBoxSuccess)
-  .catch(ui.selectBoxSuccess)
+  .catch(ui.selectBoxFailure)
+  console.log('value is', value)
+  } else {
+    $('#message').text('Space is occupied. Try again.')
+  }
 }
 
-const checkBox = function () {
-  if (store.game.cell === " ") {
-  onSelectBox() 
-} else {
-  console.log('space was taken')
-}
-}
 
 module.exports = {
   onCreateGame,

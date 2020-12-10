@@ -18,7 +18,8 @@ const createGameFailure = function (error) {
 }
 
 const selectBoxSuccess = function (response) {
-  console.log(response)
+  store.game = response.game
+  console.log(response.game)
   $('#message').text('Move made. Waiting for next player')
 }
 
