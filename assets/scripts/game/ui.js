@@ -21,9 +21,7 @@ const createGameFailure = function (error) {
   $('#message').text('Game not created. Error: ' + error.responseJSON.message)
 }
 
-const gameOverSuccess = function (response) {
-  ('#game-board').off()
-}
+
 
 const selectBoxSuccess = function (response) {
   store.game = response.game
