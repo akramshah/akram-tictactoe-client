@@ -1,5 +1,6 @@
 'use strict'
 
+const getFormFields = require("../../../lib/get-form-fields")
 const store = require("../store")
 const winDraw = require('./windraw')
 
@@ -20,15 +21,18 @@ const createGameFailure = function (error) {
   $('#message').text('Game not created. Error: ' + error.responseJSON.message)
 }
 
+const gameOverSuccess = function (response) {
+  ('#game-board').off()
+}
 
 const selectBoxSuccess = function (response) {
   store.game = response.game
   const gameObject = store.game.cells
   console.log(gameObject)
   winDraw.gameWin(gameObject)
-  $('#message').text('Move made. Waiting for next player.')
-
 }
+
+
 
 const selectBoxFailure = function (error) {
   $('#message').text('Move failed. Error: ' + error.responseJSON.message)
