@@ -14,7 +14,7 @@ const createGame = function () {
   })
 }
 
-const selectBox = function (cellIndex, player) {
+const selectBox = function (cellIndex, currentPlayer) {
   return $.ajax({
     url: config.apiUrl + '/games/' + store.game._id,
     method: 'PATCH',
@@ -22,12 +22,12 @@ const selectBox = function (cellIndex, player) {
       Authorization: 'Bearer ' + store.user.token
     },
     data: {
-    "game": {
-      "cell": {
-      "index": cellIndex,
-      "value": player
+    game: {
+      cell: {
+      index: cellIndex,
+      value: currentPlayer
       },
-      "over": false
+      over: false
     }
   }
   })

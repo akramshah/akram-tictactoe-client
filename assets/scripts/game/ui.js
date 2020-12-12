@@ -1,11 +1,14 @@
 'use strict'
 
 const store = require("../store")
+const winDraw = require('./windraw')
+
 
 const createGameSuccess = function (response) {
   console.log(response.game)
   $('#change-password').hide()
   $('#start-game').hide()
+  $('#current-player').show()
   $('#game-board').show()
   $('#message').text('New Game Started')
   store.game = response.game //in the store its adding game as parameter
@@ -17,10 +20,14 @@ const createGameFailure = function (error) {
   $('#message').text('Game not created. Error: ' + error.responseJSON.message)
 }
 
+
 const selectBoxSuccess = function (response) {
   store.game = response.game
-  console.log(response.game)
-  $('#message').text('Move made. Waiting for next player')
+  const gameObject = store.game.cells
+  console.log(gameObject)
+  winDraw.gameWin(gameObject)
+  $('#message').text('Move made. Waiting for next player.')
+
 }
 
 const selectBoxFailure = function (error) {

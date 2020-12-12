@@ -1,44 +1,59 @@
-const api = require('./api')
-const ui = require('./ui')
-const store = require('./../store')
+const api = require("./api");
+const ui = require("./ui");
+const store = require("./../store");
 
 const onCreateGame = function (event) {
-  api.createGame()
-  .then(function(response) {
-    return response
-    console.log(response)
-  })
-  .then(ui.createGameSuccess)
-  .catch(ui.createGameFailure)
-}
+  api
+    .createGame()
+    .then(function (response) {
+      return response;
+      console.log(response);
+    })
+    .then(ui.createGameSuccess)
+    .catch(ui.createGameFailure);
+};
 
-const player = 'X'
+
+let currentPlayer = "X";
+
 const switchPlayer = function () {
-
-}
-
-const onSelectBox = function (event) {
-  console.log('did this print?')
-  const cellIndex = $(event.target).data("cell-index") 
-  console.log(cellIndex)
-  const gameArray =  store.game.cells 
-  console.log(gameArray)
-  const value = gameArray[cellIndex]
-   console.log('value is ', value)
-   console.log('condition is ', value === '')
-  if (value === '') {
-    $(event.target).html(player)
-  api.selectBox(cellIndex, player)
-  .then(ui.selectBoxSuccess)
-  .catch(ui.selectBoxFailure)
-  console.log('value is', value)
+  if (currentPlayer === "X") {
+    currentPlayer = "O"
+    $('.player-id').html(currentPlayer)
   } else {
-    $('#message').text('Space is occupied. Try again.')
+    currentPlayer = "X"
+    $('.player-id').html(currentPlayer)
   }
 }
 
 
+const onSelectBox = function (event) {
+  const cellIndex = $(event.target).data("cell-index");
+  console.log(cellIndex)
+  const gameArray = store.game.cells;
+  console.log(gameArray)
+  const value = gameArray[cellIndex];
+  //  console.log('value is ', value)
+  //  console.log('condition is ', value === '')
+
+  if (value === "") {
+    $(event.target).html(currentPlayer);
+    api
+      .selectBox(cellIndex, currentPlayer)
+      .then(ui.selectBoxSuccess)
+      .catch(ui.selectBoxFailure);
+    // console.log('value is', value)
+  
+    switchPlayer();
+    
+  } else {
+    $("#message").text("Space is occupied. Try again.");
+  }
+};
+
+
+
 module.exports = {
   onCreateGame,
-  onSelectBox
+  onSelectBox,
 }

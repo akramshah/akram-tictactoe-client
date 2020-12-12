@@ -1,42 +1,64 @@
 @import "~bootstrap/scss/bootstrap";
 
-
-
 body {
   background-color: #ff6d69;
+  margin: 50px;
+}
+
+.sign-up-style {
+ padding: 30px;
+}
+
+.unauthenticated {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  flex-flow: column wrap;
 }
 
 .authenticated {
   display: flex;
   flex-direction: column;
+  align-items: center;
+}
+
+.authenticated-buttons{
+  padding: 30px;
+}
+
+#message {
+  font-family: cafeandbrewery;
+}
+
+#current-player {
+  font-family: cafeandbrewery;
+  padding: 10px;
 }
 
 @font-face {
   font-family: "TheAnthelope";
-  src: url("assets/styles/fonts/TheAnthelope.woff") format("woff"),
-    url("assets/styles/fonts/TheAnthelope.woff2") format("woff2");
+  src: url("public/TheAnthelope.woff") format("woff"),
+    url("public/TheAnthelope.woff2") format("woff2");
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
   font-family: "cafbrewery";
-  src: url("assets/styles/fonts/cafbrewery.woff") format("woff");
+  src: url("public/cafbrewery.woff") format("woff");
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
   font-family: "cafeandbrewery";
-  src: url("assets/styles/fonts/cafeandbrewery.woff2") format("woff2");
+  src: url("public/cafeandbrewery.woff2") format("woff2");
   font-weight: normal;
   font-style: normal;
 }
 
 h1 {
+  display: flex;
+  justify-content: center;
   padding: 20px;
   font-family: TheAnthelope;
   font-size: 72px;
@@ -70,13 +92,19 @@ input {
   text-align: center;
 }
 
-#game-board {
-  padding: 20px;
-  border: 0px;
+.container {
+  padding: 10px;
 }
 
-#message {
-  font-family: cafeandbrewery;
+.col-4 {
+  display: flex;
+  justify-content: center;
+  font-size: 72px;
+  font-family: TheAnthelope;
+color: white;
+text-shadow: 1px 1px 2px black,
+0 0 25px#fecc50,
+0 0 5px #fecc50;
 }
 
 .box {
