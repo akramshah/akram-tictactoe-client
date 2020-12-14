@@ -1,12 +1,13 @@
 const store = require('./../store')
 
 const signUpSuccess = function (response) {
-  $('#message').text('Account created successfully.')
+  $('#signup-message').text('Account created successfully.')
   $('form').trigger('reset')
+  $("#signup-message").show();
 }
 
 const signUpFailure = function (error) {
-  $('#message').text('Sign-up failed. Error: ' + error.responseJSON.message)
+  $('#signup-message').text('Sign-up failed. Error: ' + error.responseJSON.message)
 }
 
 const signInSuccess = function (response) {
@@ -35,6 +36,7 @@ const signOutSuccess = function (response) {
   $('#message').text('Signed out successfully.')
   $('.unauthenticated').show()
   $('.authenticated').hide()
+  $('#signup-message').hide()
   $('form').trigger('reset')
 }
 
