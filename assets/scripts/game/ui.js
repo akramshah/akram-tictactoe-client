@@ -7,20 +7,28 @@ const winDraw = require('./windraw')
 const createGameSuccess = function (response) {
   $('#change-password').hide()
   $('#start-game').hide()
+  $('#games-played').hide()
+  $('#games-text').hide()
   $('#current-player').show()
   $('#game-board').show()
   $('#message').text('New Game Started')
   store.game = response.game //in the store its adding game as parameter
   const gameObject = response.game
-  $('.col-4').on()
-  $('.col-4').html('')
+//  
 }
 
+
+const restartGameSuccess = function (response) {
+    $('.col-4').html('')
+    $('col-4').on('click')
+}
 const createGameFailure = function (error) {
   $('#message').text('Game not created. Error: ' + error.responseJSON.message)
 }
 
-
+const restartGameFailure = function (error) {
+  $('#message').text('Could not restart game' + error.responseJSON.message)
+}
 const selectBoxSuccess = function (response) {
   store.game = response.game
   const gameObject = store.game.cells
@@ -32,6 +40,7 @@ const selectBoxFailure = function (error) {
 }
 
 const gamesPlayedSuccess = function (response) {
+   $('#games-text').show()
   store.game = response.games
   console.log(store.game)
   const numberOfGames = store.game
@@ -49,6 +58,8 @@ module.exports = {
   createGameFailure,
   selectBoxSuccess,
   selectBoxFailure,
+  restartGameSuccess,
+  restartGameFailure,
   gamesPlayedSuccess,
   gamesPlayedFailure,
 }

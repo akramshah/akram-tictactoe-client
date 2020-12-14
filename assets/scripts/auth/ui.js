@@ -14,6 +14,7 @@ const signInSuccess = function (response) {
   store.user = response.user
   $('.unauthenticated').hide()
   $('.authenticated').show()
+  $('#games-text').hide()
   $('form').trigger('reset')
 }
 

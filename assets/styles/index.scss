@@ -6,7 +6,7 @@ body {
 }
 
 .sign-up-style {
- padding: 30px;
+  padding: 30px;
 }
 
 .unauthenticated {
@@ -21,7 +21,7 @@ body {
   align-items: center;
 }
 
-.authenticated-buttons{
+.authenticated-buttons {
   padding: 30px;
 }
 
@@ -29,8 +29,8 @@ body {
   font-family: cafeandbrewery;
 }
 
-#games-text{
-    font-family: cafeandbrewery;
+#games-text {
+  font-family: cafeandbrewery;
 }
 
 #current-player {
@@ -83,9 +83,9 @@ button {
   font-family: TheAnthelope;
 }
 
-button:hover{
-    color: #ff6d69;
-    box-shadow: 0 5px 15px rgba(145, 92, 182, .4);
+button:hover {
+  color: #ff6d69;
+  box-shadow: 0 5px 15px rgba(145, 92, 182, 0.4);
 }
 
 input {
@@ -105,10 +105,8 @@ input {
   justify-content: center;
   font-size: 72px;
   font-family: TheAnthelope;
-color: white;
-text-shadow: 1px 1px 2px black,
-0 0 25px#fecc50,
-0 0 5px #fecc50;
+  color: white;
+  text-shadow: 1px 1px 2px black, 0 0 25px#fecc50, 0 0 5px #fecc50;
 }
 
 .box {
@@ -284,4 +282,8 @@ text-shadow: 1px 1px 2px black,
   to {
     opacity: 1;
   }
+}
+
+div.col-4.box.select-box{
+  border: 2px solid #ffdf8f;
 }
