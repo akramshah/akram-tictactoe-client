@@ -17,11 +17,11 @@ const createGameSuccess = function (response) {
 //  
 }
 
-
 const restartGameSuccess = function (response) {
     $('.col-4').html('')
-    $('col-4').on('click')
+    $('col-4').bind('click')
 }
+
 const createGameFailure = function (error) {
   $('#message').text('Game not created. Error: ' + error.responseJSON.message)
 }
