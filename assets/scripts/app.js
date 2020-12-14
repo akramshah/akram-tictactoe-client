@@ -14,6 +14,7 @@ $(() => {
   $('#start-game').on('click', gameEvents.onCreateGame)
   $('.select-box').click(gameEvents.onSelectBox)
   $('#game-board').off('click')
+  $('#games-played').on('click', gameEvents.onGamesPlayed)
 })
 
 

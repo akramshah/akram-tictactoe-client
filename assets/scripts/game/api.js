@@ -33,7 +33,19 @@ const selectBox = function (cellIndex, currentPlayer) {
   })
 }
 
+const gamesPlayed = function (data) {
+  return $.ajax({
+    url: config.apiUrl + '/games',
+    method: 'GET',
+    data: data,
+    headers: {
+      Authorization: 'Bearer ' + store.user.token
+    }
+  })
+}
+
 module.exports = {
   createGame,
   selectBox,
+  gamesPlayed
 }

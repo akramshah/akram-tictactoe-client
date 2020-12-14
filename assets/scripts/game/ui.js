@@ -1,12 +1,10 @@
 'use strict'
 
-const getFormFields = require("../../../lib/get-form-fields")
 const store = require("../store")
 const winDraw = require('./windraw')
 
 
 const createGameSuccess = function (response) {
-  console.log(response.game)
   $('#change-password').hide()
   $('#start-game').hide()
   $('#current-player').show()
@@ -14,7 +12,8 @@ const createGameSuccess = function (response) {
   $('#message').text('New Game Started')
   store.game = response.game //in the store its adding game as parameter
   const gameObject = response.game
-  console.log('Game Object: ', gameObject)
+  $('.col-4').on()
+  $('.col-4').html('')
 }
 
 const createGameFailure = function (error) {
@@ -22,23 +21,34 @@ const createGameFailure = function (error) {
 }
 
 
-
 const selectBoxSuccess = function (response) {
   store.game = response.game
   const gameObject = store.game.cells
-  console.log(gameObject)
   winDraw.gameWin(gameObject)
 }
 
-
-
 const selectBoxFailure = function (error) {
   $('#message').text('Move failed. Error: ' + error.responseJSON.message)
+}
+
+const gamesPlayedSuccess = function (response) {
+  store.game = response.games
+  console.log(store.game)
+  const numberOfGames = store.game
+  console.log(numberOfGames)
+  const gameCounter = numberOfGames.length
+  $('.game-number').html(gameCounter)
+}
+
+const gamesPlayedFailure = function (error) {
+  $('#game-number').text('Could not retrieve games played.')
 }
 
 module.exports = {
   createGameSuccess,
   createGameFailure,
   selectBoxSuccess,
-  selectBoxFailure
+  selectBoxFailure,
+  gamesPlayedSuccess,
+  gamesPlayedFailure,
 }
