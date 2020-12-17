@@ -1,14 +1,11 @@
 'use strict'
 
 const store = require("../store")
-const winDraw = require('./windraw')
+
 
 
 const createGameSuccess = function (response) {
-  $('#change-password').hide()
-  $('#start-game').hide()
-  $('#games-played').hide()
-  $('#games-text').hide()
+  $('col-4').html("")
   $('#current-player').show()
   $('#game-board').show()
   $('#message').text('New Game Started')
@@ -17,22 +14,13 @@ const createGameSuccess = function (response) {
 //  
 }
 
-const restartGameSuccess = function (response) {
-    $('.col-4').html('')
-    $('col-4').bind('click')
-}
-
 const createGameFailure = function (error) {
   $('#message').text('Game not created. Error: ' + error.responseJSON.message)
 }
 
-const restartGameFailure = function (error) {
-  $('#message').text('Could not restart game' + error.responseJSON.message)
-}
 const selectBoxSuccess = function (response) {
   store.game = response.game
   const gameObject = store.game.cells
-  winDraw.gameWin(gameObject)
 }
 
 const selectBoxFailure = function (error) {
@@ -58,8 +46,6 @@ module.exports = {
   createGameFailure,
   selectBoxSuccess,
   selectBoxFailure,
-  restartGameSuccess,
-  restartGameFailure,
   gamesPlayedSuccess,
   gamesPlayedFailure,
 }

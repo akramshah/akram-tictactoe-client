@@ -9,7 +9,6 @@ $(() => {
   $("#game-board").hide();
   $("#restart").hide();
   $("#signup-message").hide();
-  $("#restart").on("click",gameEvents.onRestart );
   $("#sign-up").on("submit", authEvents.onSignUp);
   $("#sign-in").on("submit", authEvents.onSignIn);
   $("#change-password").on("submit", authEvents.onChangePassword);

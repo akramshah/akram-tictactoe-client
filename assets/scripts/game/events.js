@@ -3,7 +3,16 @@ const ui = require("./ui");
 const store = require("./../store");
 const getFormFields = require("./../../../lib/get-form-fields.js");
 
+
+let winGame = false
 const onCreateGame = function (event) {
+  currentPlayer = "X"
+  winGame = false
+  $('.col-4').html("")
+  //reassign current player
+  //reassign game win
+  //clear the board
+
   api
     .createGame()
     .then(function (response) {
@@ -28,9 +37,15 @@ const switchPlayer = function () {
 
 const onSelectBox = function (event) {
   const cellIndex = $(event.target).data("cell-index");
+  console.log(cellIndex)
   const gameArray = store.game.cells;
+  console.log('The game array is ' , gameArray)
   const value = gameArray[cellIndex];
-  if (value === "") {
+
+  if (value === "" && winGame === false)
+   {
+     gameArray[cellIndex] = currentPlayer
+     gameWin(gameArray)
     $(event.target).html(currentPlayer);
     api
       .selectBox(cellIndex, currentPlayer)
@@ -43,16 +58,6 @@ const onSelectBox = function (event) {
   }
 };
 
-const onRestart = function (event) {
-  api
-    .restartGame()
-    .then(function (response) {
-      return response;
-      console.log(response);
-    })
-    .then(ui.restartGameSuccess)
-    .catch(ui.restartGameFailure);
-};
 
 
 const onGamesPlayed = function (event) {
@@ -62,9 +67,47 @@ const onGamesPlayed = function (event) {
   api.gamesPlayed().then(ui.gamesPlayedSuccess).catch(ui.gamesPlayedFailure);
 };
 
+const gameWin = function (winArray) {
+  if (winArray[0] !== '' && winArray[0] === winArray[1] && winArray[0] === winArray[2]) {
+    (store.game.over === true)
+    $('#message').html('You won!')
+    winGame = true
+  } else if (winArray[3] !== '' && winArray[3] === winArray[4] && winArray[3] === winArray[5]) {
+    (store.game.over === true)
+    $('#message').html('You won!')
+    winGame = true
+  } else if (winArray[6] !== '' && winArray[6] === winArray[7] && winArray[6] === winArray[9]) {
+    (store.game.over === true)
+    $('#message').html('You won!')
+    winGame = true
+  } else if (winArray[0] !== '' && winArray[0] === winArray[3] && winArray[0] === winArray[6]) {
+    (store.game.over === true)
+    $('#message').html('You won!')
+    winGame = true
+  } else if (winArray[1] !== '' && winArray[1] === winArray[4] && winArray[1] === winArray[7]) {
+    (store.game.over === true)
+    $('#message').html('You won!')
+    winGame = true
+  } else if (winArray[2] !== '' && winArray[2] === winArray[5] && winArray[2] === winArray[8]) {
+    (store.game.over === true)
+    $('#message').html('You won!')
+    winGame = true
+  } else if (winArray[0] !== '' && winArray[0] === winArray[4] && winArray[0] === winArray[8]) {
+    (store.game.over === true)
+    $('#message').html('You won!')
+    winGame = true
+  } else if (winArray[2] !== '' && winArray[2] === winArray[4] && winArray[2] === winArray[6]) {
+    (store.game.over === true)
+    $('#message').html('You won!')
+  } else if (winArray[0] !== '' && winArray[1] !== '' && winArray[2] !== '' && winArray[3] !== '' && winArray[4] !== '' && winArray[5] !== '' && winArray[6] !== '' && winArray[7] !== '' && winArray[8] !== '') {
+    (store.game.over === true)
+    $('#message').html('Draw. Try Again.')
+    winGame = true
+
+  }
+}
 module.exports = {
   onCreateGame,
   onSelectBox,
   onGamesPlayed,
-  onRestart,
 };

@@ -13,17 +13,6 @@ const createGame = function () {
   });
 };
 
-const restartGame = function () {
-  return $.ajax({
-    url: config.apiUrl + "/games",
-    method: "POST",
-    game: {},
-    headers: {
-      Authorization: "Bearer " + store.user.token,
-    },
-  });
-};
-
 const selectBox = function (cellIndex, currentPlayer) {
   return $.ajax({
     url: config.apiUrl + "/games/" + store.game._id,
@@ -58,5 +47,4 @@ module.exports = {
   createGame,
   selectBox,
   gamesPlayed,
-  restartGame
 };
