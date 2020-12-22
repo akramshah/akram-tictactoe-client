@@ -21,12 +21,12 @@ const selectBox = function (cellIndex, currentPlayer) {
       Authorization: "Bearer " + store.user.token,
     },
     data: {
-      game: {
+      game: { //the game object
         cell: {
-          index: cellIndex,
-          value: currentPlayer,
+          index: cellIndex, //index (squares on board)
+          value: currentPlayer, //currentPlayer assigned to X
         },
-        over: false,
+        over: false, //if game is over or not.
       },
     },
   });
