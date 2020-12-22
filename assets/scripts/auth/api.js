@@ -29,7 +29,7 @@ const changePassword = function (data) {
 }
 
 const signOut = function (data) {
-  console.log(store.user.token)
+  // console.log(store.user.token)
   return $.ajax({
     url: config.apiUrl + '/sign-out',
     method: 'DELETE',
@@ -40,7 +40,7 @@ const signOut = function (data) {
   })
 }
 
-module.exports = {
+module.exports = { 
   signUp,
   signIn,
   changePassword,
