@@ -122,6 +122,49 @@ input {
   width: 50px;
 }
 
+.btn{
+    border-radius: 25px;
+    background-color: #fecc50;
+    color: #1e0521;
+    font-size: 20px;
+    font-family: TheAnthelope;
+    margin-top: 10px;
+    display: flex;
+    
+    
+}
+
+.btn:hover{
+    color: #ff6d69;
+    box-shadow: 0 5px 15px rgba(145, 92, 182, 0.4);
+    }
+
+.btn-close{
+      border-radius: 25px;
+      background-color: #fecc50;
+      color: #1e0521;
+      font-size: 20px;
+      font-family: TheAnthelope;
+}
+.modal-body{
+  font-family: cafeandbrewery;
+  font-size: 12px;
+}
+
+.modal-header {
+  font-family: cafeandbrewery;
+  font-size: 12px;
+}
+
+footer{
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+}
+
+
+
+
 //ref https://codepen.io/cybercountess/pen/RwNXxyq
 //Only colors were changed in this reference code. Classes were aligned to match which text flickers.
 
