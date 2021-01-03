@@ -29,7 +29,7 @@ body {
   font-family: cafeandbrewery;
 }
 
-#signup-message{
+#signup-message {
   font-family: cafeandbrewery;
 }
 
@@ -122,31 +122,57 @@ input {
   width: 50px;
 }
 
-.btn{
-    border-radius: 25px;
-    background-color: #fecc50;
-    color: #1e0521;
-    font-size: 20px;
-    font-family: TheAnthelope;
-    margin-top: 10px;
-    display: flex;
-    
-    
+$mynewcolor: #fecc50;
+
+.btn-primary {
+  @include button-variant(
+    $mynewcolor,
+    darken($mynewcolor, 7.5%),
+    darken($mynewcolor, 10%),
+    lighten($mynewcolor, 5%),
+    lighten($mynewcolor, 10%),
+    darken($mynewcolor, 20%)
+  );
 }
 
-.btn:hover{
-    color: #ff6d69;
-    box-shadow: 0 5px 15px rgba(145, 92, 182, 0.4);
-    }
-
-.btn-close{
-      border-radius: 25px;
-      background-color: #fecc50;
-      color: #1e0521;
-      font-size: 20px;
-      font-family: TheAnthelope;
+.btn-outline-primary {
+  @include button-outline-variant(
+    $mynewcolor,
+    #222222,
+    lighten($mynewcolor, 5%),
+    $mynewcolor
+  );
 }
-.modal-body{
+
+.btn {
+  border-radius: 25px;
+  background-color: #fecc50;
+  color: #1e0521;
+  font-size: 20px;
+  font-family: TheAnthelope;
+  margin-top: 10px;
+}
+
+.btn-outline-primary:hover {
+  color: #ff6d69;
+}
+
+.btn-info:focus,
+.btn-info.focus {
+  color: rgb(0, 0, 0);
+  background-color: #fecc50;
+  border-color: #fecc50;
+  box-shadow: 0 0 0 0.2rem rgba(58, 176, 195, 0.5);
+}
+
+.btn-close {
+  border-radius: 25px;
+  background-color: #fecc50;
+  color: #1e0521;
+  font-size: 20px;
+  font-family: TheAnthelope;
+}
+.modal-body {
   font-family: cafeandbrewery;
   font-size: 12px;
 }
@@ -156,14 +182,11 @@ input {
   font-size: 12px;
 }
 
-footer{
+footer {
   margin-top: 20px;
   display: flex;
   justify-content: center;
 }
-
-
-
 
 //ref https://codepen.io/cybercountess/pen/RwNXxyq
 //Only colors were changed in this reference code. Classes were aligned to match which text flickers.
@@ -333,6 +356,6 @@ footer{
   }
 }
 
-div.col-4.box.select-box{
+div.col-4.box.select-box {
   border: 2px solid #ffdf8f;
 }
