@@ -43,3 +43,8 @@ Unsolved Problems
 - Work on default bootstrap styling for 'about' button to match CSS.
 - Move all authorization events to bootstrap modals.
 - Allow user to select different styles of 'X' and 'O'
+
+
+Original Wireframe:
+
+![Wireframe](https://i.imgur.com/Zfb3RI1.png)
